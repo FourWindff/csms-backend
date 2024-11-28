@@ -1,7 +1,7 @@
 package com.example.csms.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.csms.entity.Registration;
+import com.example.csms.entity.registration.Registration;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

@@ -9,4 +9,7 @@ public interface LoginService {
     Login getLoginByUserId(String userId);
 
     boolean registerUser(Login login);
+
+    boolean isTeacher(String userId);
+    boolean isStudent(String userId);
 }

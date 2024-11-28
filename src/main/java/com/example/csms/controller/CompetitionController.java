@@ -87,7 +87,7 @@ public class CompetitionController {
     /*发布竞赛操作开始*/
     //发布竞赛
     @PostMapping("/Competition/saveCompetition")
-    public Result saveMatch( Match match)
+    public Result saveMatch(Match match)
     {
         //需要一个以match为参数的方法保存match表，返回值任意 ok
        int i= matchService.saveMatch(match);

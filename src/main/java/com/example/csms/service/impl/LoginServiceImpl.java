@@ -14,8 +14,7 @@ public class LoginServiceImpl implements LoginService {
     private LoginMapper loginMapper;
 
     public Login getLoginByUserId(String userId) {
-        Login loginReturn=loginMapper.selectOne(new QueryWrapper<Login>().eq("user_id", userId));
-        return loginReturn;
+        return loginMapper.selectOne(new QueryWrapper<Login>().eq("user_id", userId));
     }
 
     @Override
@@ -23,5 +22,24 @@ public class LoginServiceImpl implements LoginService {
     {
         int insert = loginMapper.insert(login);
         return insert > 0;
+    }
+
+    @Override
+    public boolean isTeacher(String userId) {
+        QueryWrapper<Login> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId);
+        Login user=loginMapper.selectById(userId);
+        if(user==null) return false;
+        return "teacher".equals(user.getRole());
+
+    }
+
+    @Override
+    public boolean isStudent(String userId) {
+        QueryWrapper<Login> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId);
+        Login user=loginMapper.selectById(userId);
+        if(user==null) return false;
+        return "student".equals(user.getRole());
     }
 }

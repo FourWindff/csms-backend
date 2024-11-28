@@ -1,8 +1,6 @@
 package com.example.csms.service;
 
-import com.example.csms.entity.Registration;
-import com.example.csms.entity.RegistrationDTO;
-import com.example.csms.entity.Teacher;
+import com.example.csms.entity.registration.Registration;
 
 import java.util.List;
 
