@@ -115,5 +115,4 @@ public class UserController {
             return Result.error("该学生ID不存在，获取失败");
         }
     }
-    /*学生个人信息表操作结束*/
 }

@@ -7,6 +7,7 @@ import com.example.csms.entity.member.MemberVO;
 import com.example.csms.entity.registration.Registration;
 import com.example.csms.entity.registration.RegistrationDTO;
 import com.example.csms.entity.registration.RegistrationVO;
+import com.example.csms.entity.work.Work;
 import com.example.csms.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +27,9 @@ public class RegistrationController {
     private final TeamService teamService;
     private final MemberService memberService;
     private final LoginService loginService;
+    private final WorkService workService;
 
-    public RegistrationController(RegistrationService registrationService, StudentService studentService, TeacherService teacherService, MatchService matchService, TeamService teamService, MemberService memberService, LoginService loginService) {
+    public RegistrationController(RegistrationService registrationService, StudentService studentService, TeacherService teacherService, MatchService matchService, TeamService teamService, MemberService memberService, LoginService loginService, WorkService workService) {
         this.registrationService = registrationService;
         this.studentService = studentService;
         this.teacherService = teacherService;
@@ -35,6 +37,7 @@ public class RegistrationController {
         this.teamService = teamService;
         this.memberService = memberService;
         this.loginService = loginService;
+        this.workService = workService;
     }
 
     /*报名操作开始*/
@@ -74,9 +77,9 @@ public class RegistrationController {
         Registration newRegistration = new Registration(matchId, "PENDING", teamId);
         Team team = new Team(teamId, memberCount);
         teamService.saveTeam(team);
-
         registrationService.saveRegistration(newRegistration);
         memberService.saveMembers(memberDTOList, teamId);
+        workService.saveOneWork(new Work(teamId,null,null,null,null,"NOT_SUBMIT"));
 
         return Result.success("报名成功");
 

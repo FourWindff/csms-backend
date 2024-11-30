@@ -87,4 +87,15 @@ create table teacher_char
         foreign key (user_id) references user_char (user_id)
 );
 
+create table work
+(
+    team_id                 varchar(50)  not null
+        primary key,
+    user_id                 varchar(50)  null,
+    file_name               varchar(255) null,
+    upload_date_time        varchar(255) null,
+    last_modified_date_time varchar(255) null,
+    status                  varchar(45)  null
+);
+
 

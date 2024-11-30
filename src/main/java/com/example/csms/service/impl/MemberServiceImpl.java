@@ -48,8 +48,10 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member getMemberById(String userId) {
-        return memberMapper.selectById(userId);
+    public List<Member> getMembersByUserId(String userId) {
+        QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId);
+        return memberMapper.selectList(queryWrapper);
     }
 
     @Override
